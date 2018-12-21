@@ -1,0 +1,16 @@
+---
+- name: This sets up an httpd webserver
+  hosts: group1
+  tasks:
+  - name: Install apache packages 
+    yum:
+      name: tomcat
+      state: present
+  - name: Start service tomcat, if not started
+    service:
+      name: tomcat
+      state: started
+  - name: deploy tomcat
+    get_url:
+      url: https://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/12c/03-DeployApps/files/benefits.war
+      dest: /usr/share/tomcat/webapps 

@@ -1,0 +1,12 @@
+---
+- name: to setup apache2
+  hosts: group2
+  tasks:
+  - name: Install apache packages
+    apt:
+      name: apache2
+      state: present
+  - name: Start service apache2, if not started
+    service:
+      name: apache2
+      state: started

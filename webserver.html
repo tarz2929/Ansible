@@ -1,0 +1,14 @@
+---
+ - name: this sets up an httpd server
+   hosts: all
+   tasks:
+   - name: Install apache2 packages
+     apt:
+	   name: apache2 
+	   state: present
+	 when: ansible_distribution == "ubuntu'
+   -name: Install httpd packages  
+    yum:
+	  name: httpd 
+	  state: present
+	when: ansible_distribution == "Redhat"
